@@ -22,15 +22,18 @@ export default class module {
         };
 
         this.tasks.push(newTask);
+        this.saveToLocalStorage();
     }
 
     doneTask(task) {
         task.status = 'done';
+        this.saveToLocalStorage();
     }
 
     revoveTask(task) {
         const index = this.tasks.indexOf(task);
         
         this.tasks.splice(index, 1);
+        this.saveToLocalStorage();
     }
 }
