@@ -5,10 +5,14 @@ const model = new Model();
 const view = new View(model.tasks);
 
 
-model.addTask('Заверстать стартовый шаблон');
-model.addTask('Написать скрипт');
-model.addTask('Записать урок');
+view.elements.form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const newTask = model.addTask(view.elements.input.value);
 
-model.doneTask(model.tasks[1]);
-console.log(model);
+    view.renderTasks(newTask);
+    view.clearInput();
+    
+});
+
 

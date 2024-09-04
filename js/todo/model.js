@@ -23,6 +23,8 @@ export default class module {
 
         this.tasks.push(newTask);
         this.saveToLocalStorage();
+
+        return newTask;
     }
 
     doneTask(task) {
