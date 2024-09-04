@@ -32,12 +32,27 @@ export default class module {
         return newTask;
     }
 
-    doneTask(task) {
-        task.status = 'done';
+    findTask(id) {
+        const task = this.tasks.find(function (task) {
+            if (task.id === parseInt(id)) {
+                return true;
+            }
+        })
+        return task;
+    }
+
+    changeStatus(task) {
+        if (task.status === 'active') {
+            task.status = 'done';
+        } else {
+            task.status = 'active';
+        }
+
+        
         this.saveToLocalStorage();
     }
 
-    revoveTask(task) {
+    removeTask(task) {
         const index = this.tasks.indexOf(task);
         
         this.tasks.splice(index, 1);

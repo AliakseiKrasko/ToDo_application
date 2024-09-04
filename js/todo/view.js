@@ -22,7 +22,7 @@ export default class view {
 
     
     const taskHtml = `
-      <li class="todo-item">
+      <li class="todo-item" data-id="${taskObject.id}">
         <label class="todo-item-label">
           <input class="checkbox" type="checkbox" ${checked}/>
           <span class="${completeClass}">${taskObject.text}</span>
@@ -35,5 +35,18 @@ export default class view {
 
   clearInput() {
     this.elements.input.value = "";
+  }
+
+  changeStatus(taskObject) {
+    const taskElement = this.elements.taskList.querySelector(`[data-id="${taskObject.id}"]`);
+    console.log(taskElement);
+
+    const taskTextEl = taskElement.querySelector('span');
+
+    if (taskObject.status === 'done') {
+      taskTextEl.classList.add('completed');
+    } else {
+      taskTextEl.classList.remove('completed');
+    }
   }
 }

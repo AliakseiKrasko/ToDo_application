@@ -17,11 +17,16 @@ view.elements.form.addEventListener('submit', function(e) {
 
 // Нажали на чек
 view.elements.taskList.addEventListener('click', function(e) {
-    console.log(e.target);
+    
     // Проверяем клик по чекбоксу
     if (e.target.getAttribute('type') === 'checkbox') {
-        
+        const id = e.target.closest('.todo-item').dataset.id;
+        const task = model.findTask(id);
+        model.changeStatus(task);
+        view.changeStatus(task);
     }
 });
+
+
 
 
