@@ -25,7 +25,16 @@ view.elements.taskList.addEventListener('click', function(e) {
         model.changeStatus(task);
         view.changeStatus(task);
     }
-});
+    // Клик по кнопке удалить 
+    if (e.target.hasAttribute('data-delete')) {
+        const id = e.target.closest('.todo-item').dataset.id;
+        const task = model.findTask(id);
+        model.removeTask(task);
+        view.removeTask(task);
+    }
+   
+})
+
 
 
 
